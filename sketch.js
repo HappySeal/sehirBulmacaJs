@@ -62,7 +62,7 @@ function cityChoose(){
       answers[i] = trueAnswer[0];
     }else{
       var tempCity = random(city);
-      while(answers.includes(tempCity)){
+      while(answers.includes(tempCity) || tempCity == trueAnswer[0]){
         tempCity = random(city);
       }
       answers[i] = tempCity;
