@@ -5,7 +5,6 @@ var n = 0;
 var button = [["",null],["",null],["",null],["",null]];
 var secenekler = [];
 
-
 function preload(){
   for(var i = 0;i<city.length;i++){
     city[i][1] = loadImage('static/images/city/'+(i+1)+'.png');
