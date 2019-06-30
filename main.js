@@ -1,9 +1,13 @@
 var city = [['Edirne',''],[ 'Kırklareli',''],[ 'Tekirdağ',''],[ 'İstanbul',''],[ 'Kocaeli',''],[ 'Yalova',''],[ 'Sakarya',''],[ 'Düzce',''],[ 'Zonguldak',''],[ 'Bartın',''],[ 'Kastamonu',''],[ 'Sinop',''],[ 'Samsun',''],[ 'Ordu',''],[ 'Giresun',''],[ 'Trabzon',''],[ 'Rize',''],[ 'Artvin',''],[ 'Ardahan',''],[ 'Erzurum',''],[ 'Bayburt',''],[ 'Gümüşhane',''],[ 'Sivas',''],[ 'Tokat',''],[ 'Amasya',''],[ 'Çorum',''],[ 'Çankırı',''],[ 'Bolu',''],[ 'Bilecik',''],[ 'Balıkesir',''],[ 'Çanakkale',''],[ 'İzmir',''],[ 'Manisa',''],[ 'Kütahya',''],[ 'Eskişehir',''],[ 'Ankara',''],[ 'Kırıkkale',''],[ 'Yozgat',''],[ 'Erzincan',''],[ 'Kars',''],[ 'Ağrı',''],[ 'Iğdır',''],[ 'Van',''],[ 'Hakkari',''],[ 'Şirnak',''],[ 'Siirt',''],[ 'Bitlis',''],[ 'Muş',''],[ 'Bingöl',''],[ 'Diyarbakır',''],[ 'Mardin',''],[ 'Şanlıurfa',''],[ 'Adıyaman',''],[ 'Elazığ',''],[ 'Tunceli',''],[ 'Malatya',''],[ 'Kahramanmaraş',''],[ 'Gaziantep',''],[ 'Batman',''],[ 'Kayseri',''],[ 'Adana',''],[ 'Osmaniye',''],[ 'Hatay',''],[ 'Nevşehir',''],[ 'Niğde',''],[ 'Mersin',''],[ 'Karaman',''],[ 'Konya',''],[ 'Aksaray',''],[ 'Kilis',''],[ 'Antalya',''],[ 'Isparta',''],[ 'Afyonkarahisar',''],[ 'Uşak',''],[ 'Denizli',''],[ 'Muğla',''],[ 'Aydin',''],[ 'Bursa',''],[ 'Kırşehir',''],[ 'Karabük',''],[ 'Burdur','']];
 
-var time,score,trueAnswer,mode,icon;
+var score = [0,0];
+
+var time,trueAnswer,mode,icon;
 var n = 0;
+var hiScore = 0;
 var button = [["",null],["",null],["",null],["",null]];
 var secenekler = [];
+var timeTotal = 90;
 
 function preload(){
   for(var i = 0;i<city.length;i++){
@@ -24,28 +28,27 @@ var buttonMouseCenter = function(xa,wa,ya,ha,press) {
 }
 
 function setup(){
-  score = 0;
   createCanvas(window.screen.availWidth,window.screen.availHeight-78);
   scale(width/1366);
   mode = 0;
 }
 
 function draw(){
-  endScreen();
-  // if(mode == 0)introScreen();
-  // if(mode == 1)gameScreen();
+  if(mode == 0)introScreen();
+  if(mode == 1)gameScreen();
+  if(mode == 2)endScreen();
 }
 function mousePressed(){
   if(mode == 1){
     for(var i = 0;i<button.length;i++){
       if(buttonMouse((i%2)*width/2,width/2,height*(0.8)+(i>1)*height*(0.1),height*(0.1),true)){
         if(i == trueAnswer[1]){
-          console.log("True bitch!");
-          score++;
+          //console.log("True bitch!");
+          score[0]=score[0]+1;
           cityChoose();
         }else{
-          console.log("wtf modafuka?");
-          score--;
+          //console.log("wtf modafuka?");
+          score[1]=score[1]+1;
           cityChoose();
         }
       }
@@ -64,12 +67,12 @@ function mousePressed(){
 function keyPressed() {
   if(keyCode < 53 && keyCode > 48 && mode == 1){
     if(keyCode-49 == trueAnswer[1]){
-      console.log("True bitch!");
-      score++;
+      //console.log("True bitch!");
+      score[0]=score[0]+1;
       cityChoose();
     }else{
-      console.log("wtf modafuka?");
-      score--;
+      //console.log("wtf modafuka?");
+      score[1]=score[1]+1;
       cityChoose();
     }
   }

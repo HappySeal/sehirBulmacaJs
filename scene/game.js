@@ -27,12 +27,16 @@ function cityChoose(){
   image(trueAnswer[0][1],0,0,width,height*(0.8));
   textSize(20);
   fill(0);
-  text("Puan: "+score,width*(0.9),50);
+  text("Puan: "+(score[0]-score[1]),width*(0.9),50);
 }
 
 
 function gameScreen() {
   stroke(224);
   strokeWeight(10);
-  text("Sure: 0"+floor((120-floor((millis()-time)/1000))/60)+"."+(120-floor((millis()-time)/1000))%60,width*(0.9),25)
+  text("Sure: 0"+floor((timeTotal-floor((millis()-time)/1000))/60)+"."+(timeTotal-floor((millis()-time)/1000))%60,width*(0.9),25)
+  if(timeTotal-((millis()-time)/1000) < 0){
+    time = millis();
+    mode = 2;
+  }
 }
