@@ -1,6 +1,29 @@
-const cheerio = require('cheerio');
-let page = cheerio.load("http://gmscoreboard.com/handle_score.php?tagid=5d4f09c4e525b15654609322539&getscore=10");
-console.log(page);
+function getJSONP(url, success) {
+
+  var ud = '_' + +new Date,
+      script = document.createElement('script'),
+      head = document.getElementsByTagName('head')[0] 
+             || document.documentElement;
+
+  window[ud] = function(data) {
+      head.removeChild(script);
+      success && success(data);
+  };
+
+  script.src = url.replace('callback=?', 'callback=' + ud);
+  head.appendChild(script);
+
+}
+
+getJSONP('http://gmscoreboard.com/handle_score.php?tagid=5d4f09c4e525b15654609322539&getscore=10', function(data){
+  console.log(data);
+});  
+
+
+
+
+
+
 var city = [['Edirne',''],[ 'Kırklareli',''],[ 'Tekirdağ',''],[ 'İstanbul',''],[ 'Kocaeli',''],[ 'Yalova',''],[ 'Sakarya',''],[ 'Düzce',''],[ 'Zonguldak',''],[ 'Bartın',''],[ 'Kastamonu',''],[ 'Sinop',''],[ 'Samsun',''],[ 'Ordu',''],[ 'Giresun',''],[ 'Trabzon',''],[ 'Rize',''],[ 'Artvin',''],[ 'Ardahan',''],[ 'Erzurum',''],[ 'Bayburt',''],[ 'Gümüşhane',''],[ 'Sivas',''],[ 'Tokat',''],[ 'Amasya',''],[ 'Çorum',''],[ 'Çankırı',''],[ 'Bolu',''],[ 'Bilecik',''],[ 'Balıkesir',''],[ 'Çanakkale',''],[ 'İzmir',''],[ 'Manisa',''],[ 'Kütahya',''],[ 'Eskişehir',''],[ 'Ankara',''],[ 'Kırıkkale',''],[ 'Yozgat',''],[ 'Erzincan',''],[ 'Kars',''],[ 'Ağrı',''],[ 'Iğdır',''],[ 'Van',''],[ 'Hakkari',''],[ 'Şirnak',''],[ 'Siirt',''],[ 'Bitlis',''],[ 'Muş',''],[ 'Bingöl',''],[ 'Diyarbakır',''],[ 'Mardin',''],[ 'Şanlıurfa',''],[ 'Adıyaman',''],[ 'Elazığ',''],[ 'Tunceli',''],[ 'Malatya',''],[ 'Kahramanmaraş',''],[ 'Gaziantep',''],[ 'Batman',''],[ 'Kayseri',''],[ 'Adana',''],[ 'Osmaniye',''],[ 'Hatay',''],[ 'Nevşehir',''],[ 'Niğde',''],[ 'Mersin',''],[ 'Karaman',''],[ 'Konya',''],[ 'Aksaray',''],[ 'Kilis',''],[ 'Antalya',''],[ 'Isparta',''],[ 'Afyonkarahisar',''],[ 'Uşak',''],[ 'Denizli',''],[ 'Muğla',''],[ 'Aydin',''],[ 'Bursa',''],[ 'Kırşehir',''],[ 'Karabük',''],[ 'Burdur','']];
 
 var score = [0,0];
