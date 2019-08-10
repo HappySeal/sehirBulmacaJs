@@ -43,11 +43,9 @@ function mousePressed(){
     for(var i = 0;i<button.length;i++){
       if(buttonMouse((i%2)*width/2,width/2,height*(0.8)+(i>1)*height*(0.1),height*(0.1),true)){
         if(i == trueAnswer[1]){
-          //console.log("True bitch!");
           score[0]=score[0]+1;
           cityChoose();
         }else{
-          //console.log("wtf modafuka?");
           score[1]=score[1]+1;
           cityChoose();
         }
