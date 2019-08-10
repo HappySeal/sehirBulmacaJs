@@ -1,4 +1,7 @@
-
+function neghetfunc(x){
+  if(x<0)return 0
+  else return x
+}
 function cityChoose(){
   var answers = [];
   trueAnswer = [random(city),round(random(0,3))];
@@ -27,7 +30,7 @@ function cityChoose(){
   image(trueAnswer[0][1],0,0,width,height*(0.8));
   textSize(20);
   fill(0);
-  text("Puan: "+(score[0]-score[1]),width*(0.9),50);
+  text("Puan: "+neghetfunc(score[0]-score[1]),width*(0.9),50);
 }
 
 

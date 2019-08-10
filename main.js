@@ -65,11 +65,9 @@ function mousePressed(){
 function keyPressed() {
   if(keyCode < 53 && keyCode > 48 && mode == 1){
     if(keyCode-49 == trueAnswer[1]){
-      //console.log("True bitch!");
       score[0]=score[0]+1;
       cityChoose();
     }else{
-      //console.log("wtf modafuka?");
       score[1]=score[1]+1;
       cityChoose();
     }
